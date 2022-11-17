@@ -1,8 +1,10 @@
+package com.digytal.tapronto.app.sql;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class FabricaConexao {
+    //iniciando a persistencia de dados com JDBC
     public static Connection criarConexao(){
         Connection conn =null;
         try {
@@ -14,7 +16,4 @@ public class FabricaConexao {
         return conn;
     }
 
-    public static void main(String[] args) {
-        criarConexao();
-    }
 }
