@@ -34,7 +34,7 @@ public class ServicoRepository {
     }
     public void alterar(Servico servico){
         try {
-            String sql = "UPDATE tab_servico SET descricao = ?, SET valor = ? WHERE id = ?";
+            String sql = "UPDATE tab_servico SET descricao = ?, valor = ? WHERE id = ?";
 
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1, servico.getDescricao());
@@ -63,6 +63,11 @@ public class ServicoRepository {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+    //buscar um servico na base atraves do seu id ?
+    public Servico buscar(Integer id){
+        //que vcs implementem esta lógica
+        return null;
     }
     public List<Servico> listar(){
         List<Servico> registros = new ArrayList<>();
