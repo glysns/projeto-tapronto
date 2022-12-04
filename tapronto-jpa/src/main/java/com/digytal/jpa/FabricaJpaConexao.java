@@ -1,7 +1,6 @@
 package com.digytal.jpa;
 
 import javax.persistence.*;
-
 public class FabricaJpaConexao {
     //conexao
     private static EntityManager entityManager;
