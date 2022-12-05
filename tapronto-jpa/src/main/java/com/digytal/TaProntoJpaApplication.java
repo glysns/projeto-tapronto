@@ -9,11 +9,31 @@ import java.util.List;
 public class TaProntoJpaApplication {
     public static void main(String[] args) {
         FabricaJpaConexao.conectar();
-        listarServicos();
+        //listarServicos();
+        //salvarServico();
+        //alterarServico();
+        excluirServico();
+    }
+    static void salvarServico(){
+        Servico servico = new Servico();
+        servico.setDescricao("LAVAGEM DE BIKE");
+        servico.setValor(15.0);
+        ServicoRepository servicoRepository = new ServicoRepository();
+        servicoRepository.salvar(servico);
+    }
+    static void alterarServico(){
+        //Servico servico = //?seu metodo buscar   ;
+        ServicoRepository servicoRepository = new ServicoRepository();
+        Servico servico = servicoRepository.buscar(4);
+        servico.setDescricao("LAVAGEM DE BIKE COMPLETA");
+        //servico.setValor(45.0);
+
+
+        servicoRepository.alterar(servico);
     }
     static void excluirServico(){
         ServicoRepository servicoRepository = new ServicoRepository();
-        servicoRepository.excluir(3);
+        servicoRepository.excluir(4);
     }
     static void listarServicos(){
         ServicoRepository servicoRepository = new ServicoRepository();
@@ -22,22 +42,6 @@ public class TaProntoJpaApplication {
             System.out.println(s.getDescricao());
         }
     }
-    static void alterarServico(){
-        //Servico servico = //?seu metodo buscar   ;
 
-        Servico servico = new Servico();
-        servico.setId(3);
-        servico.setDescricao("LAVAGEM DE CARPETE");
-        servico.setValor(45.0);
 
-        ServicoRepository servicoRepository = new ServicoRepository();
-        servicoRepository.alterar(servico);
-    }
-    static void salvarServico(){
-        Servico servico = new Servico();
-        servico.setDescricao("LAVAGEM DE CARPETE");
-        servico.setValor(28.5);
-        ServicoRepository servicoRepository = new ServicoRepository();
-        servicoRepository.salvar(servico);
-    }
 }

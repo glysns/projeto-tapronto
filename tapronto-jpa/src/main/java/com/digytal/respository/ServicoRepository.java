@@ -5,11 +5,6 @@ import com.digytal.model.Servico;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServicoRepository {
@@ -18,18 +13,30 @@ public class ServicoRepository {
         em = FabricaJpaConexao.getEntityManager();
     }
     public void salvar (Servico servico){
-
+        em.getTransaction().begin();
+        em.persist(servico);
+        em.getTransaction().commit();
     }
     public void alterar(Servico servico){
-
+        em.getTransaction().begin();
+        em.merge(servico);
+        em.getTransaction().commit();
     }
     public void excluir(Integer id){
+
+        Servico registro = buscar(id);
+        if(registro!=null){
+            em.getTransaction().begin();
+            em.remove(registro);
+            em.getTransaction().commit();
+        }
+
 
     }
     //buscar um servico na base atraves do seu id ?
     public Servico buscar(Integer id){
-        //que vcs implementem esta lógica
-        return null;
+       Servico registro = em.find(Servico.class,id);
+        return registro;
     }
     public List<Servico> listar(){
         //JPQL - > SELECT sobre as nossas classes
