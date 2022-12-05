@@ -4,17 +4,19 @@ import javax.persistence.*;
 public class FabricaJpaConexao {
     //conexao
     private static EntityManager entityManager;
-    public static void conectar() {
+    public static void criarConexao() {
         try {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
-            entityManager = factory.createEntityManager();
-            System.out.println("conexao realizada com sucesso");
+            if(entityManager==null) {
+                EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
+                entityManager = factory.createEntityManager();
+                System.out.println("conexao realizada com sucesso");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
 
-    public static void main(String[] args) {
-        FabricaJpaConexao.conectar();
+    }
+    public static EntityManager getEntityManager() {
+        return entityManager;
     }
 }
