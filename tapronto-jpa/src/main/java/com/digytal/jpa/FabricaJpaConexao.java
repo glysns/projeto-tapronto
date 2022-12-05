@@ -14,7 +14,7 @@ public class FabricaJpaConexao {
         }
     }
 
-    public static void main(String[] args) {
-        FabricaJpaConexao.conectar();
+    public static EntityManager getEntityManager() {
+        return entityManager;
     }
 }

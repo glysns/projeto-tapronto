@@ -2,20 +2,14 @@ package com.digytal;
 
 import com.digytal.jpa.FabricaJpaConexao;
 import com.digytal.model.Servico;
-import com.digytal.repository.ServicoRepository;
+import com.digytal.respository.ServicoRepository;
 
 import java.util.List;
 
-public class TaProntoApplication {
+public class TaProntoJpaApplication {
     public static void main(String[] args) {
-        FabricaJpaConexao.criarConexao();
-        //salvarServico();
-        // alterarServico();
-        System.out.println("LISTANDO ANTES DA EXCLUSAO");
+        FabricaJpaConexao.conectar();
         listarServicos();
-        //excluirServico();
-        //System.out.println("LISTANDO APOS A EXCLUSAO");
-        //listarServicos();
     }
     static void excluirServico(){
         ServicoRepository servicoRepository = new ServicoRepository();
